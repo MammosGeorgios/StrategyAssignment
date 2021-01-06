@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IPaymentStrategy.cs" />
+    <Compile Include="Interfaces\ISortStrategy.cs" />
     <Compile Include="Models\Color.cs" />
     <Compile Include="Models\Fabric.cs" />
     <Compile Include="Models\Tshirt.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Strategies\BankPaymentStrategy.cs" />
     <Compile Include="Strategies\CashPaymentStrategy.cs" />
     <Compile Include="Strategies\CreditPaymentStrategy.cs" />
+    <Compile Include="Strategies\QuickSortStrategy.cs" />
     <Compile Include="Utils\Menu.cs" />
   </ItemGroup>
   <ItemGroup>

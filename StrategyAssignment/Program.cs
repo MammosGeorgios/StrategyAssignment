@@ -14,14 +14,29 @@ namespace StrategyAssignment
     {
         static void Main(string[] args)
         {
+            //Assignment3Example();
 
-            Tshirt t1 = new Tshirt(Color.RED, Size.L, Fabric.SILK,new CashPaymentStrategy());
+            Random rand = new Random();
+            List<Tshirt> tshirts = new List<Tshirt>();
+            for (int i = 0; i < 40; i++)
+            {
+                Tshirt newTshirt = new Tshirt("Tshirt" + i, (Color)rand.Next(1, 7), (Size)rand.Next(1, 7), (Fabric)rand.Next(1, 7));
+                tshirts.Add(newTshirt);
+            }
+            QuickSortStrategy qs = new QuickSortStrategy();
+            qs.SortByColorAscending(tshirts);
+
+        }
+
+        private static void Assignment3Example()
+        {
+            Tshirt t1 = new Tshirt("t1", Color.RED, Size.L, Fabric.SILK, new CashPaymentStrategy());
             t1.Pay();
 
-            Tshirt t2 = new Tshirt(Color.RED, Size.L, Fabric.SILK, new BankPaymentStrategy());
+            Tshirt t2 = new Tshirt("t2", Color.RED, Size.L, Fabric.SILK, new BankPaymentStrategy());
             t2.Pay();
 
-            Tshirt t3 = new Tshirt(Color.RED, Size.L, Fabric.SILK, new CreditPaymentStrategy());
+            Tshirt t3 = new Tshirt("t3", Color.RED, Size.L, Fabric.SILK, new CreditPaymentStrategy());
             t3.Pay();
 
 
@@ -34,7 +49,7 @@ namespace StrategyAssignment
             while (true)
             {
                 menu.FabricMenu();
-                while(!(int.TryParse(Console.ReadLine(),out fabric) &&(fabric>=1 && fabric <= 7)))
+                while (!(int.TryParse(Console.ReadLine(), out fabric) && (fabric >= 1 && fabric <= 7)))
                 {
                     Console.WriteLine("Wrong Choice");
                     Console.WriteLine();
@@ -57,7 +72,7 @@ namespace StrategyAssignment
                     menu.SizeMenu();
                 }
 
-                Tshirt tshirt = new Tshirt((Color)(color - 1), (Size)(size - 1), (Fabric)(fabric - 1));
+                Tshirt tshirt = new Tshirt("menuTshirt", (Color)(color - 1), (Size)(size - 1), (Fabric)(fabric - 1));
 
                 menu.PaymentMethodMenu();
                 while (!(int.TryParse(Console.ReadLine(), out paymentMethod) && (paymentMethod >= 1 && paymentMethod <= 3)))
@@ -78,9 +93,9 @@ namespace StrategyAssignment
                         paymentStrategy = new BankPaymentStrategy();
                         break;
                     case 3:
-                       paymentStrategy = new  CashPaymentStrategy();
+                        paymentStrategy = new CashPaymentStrategy();
                         break;
-                    
+
                 }
                 tshirt.SetPaymentStrategy(paymentStrategy);
                 tshirt.Pay();
@@ -88,14 +103,12 @@ namespace StrategyAssignment
                 Console.WriteLine();
                 Console.WriteLine("Do you want to buy another Tshirt?");
                 string answer = Console.ReadLine();
-                if(!(answer.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || answer.Equals("y", StringComparison.InvariantCultureIgnoreCase)))
+                if (!(answer.Equals("yes", StringComparison.InvariantCultureIgnoreCase) || answer.Equals("y", StringComparison.InvariantCultureIgnoreCase)))
                 {
                     break;
                 }
                 Console.WriteLine();
             }
-
-
         }
     }
 }

@@ -12,6 +12,7 @@ namespace StrategyAssignment.Models
 
         private IPaymentStrategy _paymentStrategy;
 
+        public string Name { get; }
         public Color Color { get; }
         public Size Size { get; }
         public Fabric Fabric { get; }
@@ -34,15 +35,16 @@ namespace StrategyAssignment.Models
 
         #region Constructors
 
-        public Tshirt(Color color, Size size, Fabric fabric)
+        public Tshirt(string name, Color color, Size size, Fabric fabric)
         {
+            this.Name = name;
             this.Color = color;
             this.Size = size;
             this.Fabric = fabric;
             
         }
 
-        public Tshirt(Color color, Size size, Fabric fabric,IPaymentStrategy paymentStrategy) : this(color, size, fabric)
+        public Tshirt(string name,Color color, Size size, Fabric fabric,IPaymentStrategy paymentStrategy) : this(name,color, size, fabric)
         {
             if (paymentStrategy == null)
             {
