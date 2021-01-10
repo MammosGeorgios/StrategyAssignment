@@ -56,5 +56,15 @@ namespace StrategyAssignment.Models
 
         #endregion
 
+        public void PrintTshirtName()
+        {
+            Console.WriteLine($"{this.Name}");
+        }
+
+        public Tshirt DeepCopy()
+        {
+            Tshirt newTshirt = new Tshirt(this.Name, this.Color, this.Size, this.Fabric);
+            return (newTshirt);
+        }
     }
 }

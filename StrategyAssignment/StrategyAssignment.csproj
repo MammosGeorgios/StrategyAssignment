@@ -52,6 +52,8 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategies\BankPaymentStrategy.cs" />
+    <Compile Include="Strategies\BubbleSort.cs" />
+    <Compile Include="Strategies\BucketSortStrategy.cs" />
     <Compile Include="Strategies\CashPaymentStrategy.cs" />
     <Compile Include="Strategies\CreditPaymentStrategy.cs" />
     <Compile Include="Strategies\QuickSortStrategy.cs" />
